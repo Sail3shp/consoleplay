@@ -12,6 +12,7 @@ function getComputerChoice(){
     }
 }
 let computerChoice = getComputerChoice().toLowerCase();
+let rounds = prompt("how many rounds") ;
 function getUserChoice(){
     let choice = prompt("Rock, paper ,Scissors?");
     return choice.toLowerCase();
@@ -20,7 +21,7 @@ let humanScore = 0;
 let computerScore = 0;
 function playRound(humanChoice,computerChoice){
     if(humanChoice =="rock" && computerChoice=="paper"){
-        return "computer won";
+        return "computer wins";
     }
     else if(humanChoice =="rock" && computerChoice=="scissors"){
         return "human wins";
@@ -44,5 +45,26 @@ function playRound(humanChoice,computerChoice){
         return "not valid input"
     }
    }
-   console.log(playRound(getUserChoice(),computerChoice));
    console.log(computerChoice)
+   function playGame(rounds){
+    for(let i=0;i<rounds;i++){
+        if(playRound(getUserChoice(),computerChoice)=="computer wins"){
+            computerScore++;
+        }
+        else if(playRound(getUserChoice(),computerChoice)=="human wins"){
+            humanScore++;
+        }
+        else{
+            humanScore++;
+            computerScore++;
+        }
+    }
+    if(computerScore>humanScore){
+        alert("computer wins")
+    }
+    else{
+        alert("human wins")
+    }
+
+   }
+   playGame(rounds)

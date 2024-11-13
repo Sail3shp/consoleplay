@@ -11,14 +11,71 @@ function getComputerChoice(){
         return "scissors";
     }
 }
-let computerChoice = getComputerChoice().toLowerCase();
-let rounds = prompt("how many rounds") ;
-function getUserChoice(){
+let humanScore = 0;
+let computerScore = 0;//let userChoice = 0;
+
+const humanScoreDisplay = document.getElementById("humanScore");
+const computerScoreDisplay = document.getElementById("computerScore");
+
+function updateScore(){
+    humanScoreDisplay.textContent = humanScore;
+    computerScoreDisplay.textContent = computerScore;
+    if(humanScore >= 5){
+        humanScore=0;
+        computerScore=0;
+        alert('you win');
+    }
+    if(computerScore >= 5){
+        humanScore = 0;
+        computerScore = 0;
+        alert('computer won');
+    }
+}
+const rock = document.getElementById("rock");
+rock.addEventListener("click",function(){
+    if(playRound("rock",getComputerChoice())=="computer wins"){
+        computerScore++;
+    }
+    else if(playRound("rock",getComputerChoice())=="human wins"){
+        humanScore++;
+    }
+    else{
+
+    }
+    updateScore();
+});
+const paper = document.getElementById("paper");
+paper.addEventListener("click",function(){
+    if(playRound("paper",getComputerChoice())=="computer wins"){
+        computerScore++;
+    }
+    else if(playRound("paper",getComputerChoice())=="human wins"){
+        humanScore++;
+    }
+    else{
+
+    }
+    updateScore();
+});
+const scissors = document.getElementById("scissors");
+scissors.addEventListener("click",function(){
+    if(playRound("scissors",getComputerChoice())=="computer wins"){
+        computerScore++;
+    }
+    else if(playRound("scissors",getComputerChoice())=="human wins"){
+        humanScore++;
+    }
+    else{
+
+    }
+    updateScore();
+});
+//let rounds = prompt("how many rounds") ;
+/*function getUserChoice(){
     let choice = prompt("Rock, paper ,Scissors?");
     return choice.toLowerCase();
-}
-let humanScore = 0;
-let computerScore = 0;
+}*/
+
 function playRound(humanChoice,computerChoice){
     if(humanChoice =="rock" && computerChoice=="paper"){
         return "computer wins";
@@ -45,8 +102,8 @@ function playRound(humanChoice,computerChoice){
         return "not valid input"
     }
    }
-   console.log(computerChoice)
-   function playGame(rounds){
+   console.log(getComputerChoice());
+   /*function playGame(rounds){
     for(let i=0;i<rounds;i++){
         if(playRound(getUserChoice(),computerChoice)=="computer wins"){
             computerScore++;
@@ -58,13 +115,8 @@ function playRound(humanChoice,computerChoice){
             humanScore++;
             computerScore++;
         }
-    }
-    if(computerScore>humanScore){
-        alert("computer wins")
-    }
-    else{
-        alert("human wins")
-    }
+    }*/
+   
 
-   }
-   playGame(rounds)
+   
+   //playGame(rounds)
